@@ -1,0 +1,58 @@
+table Operational_Expense
+	lineageTag: 43d6fd61-8d0b-4326-9953-97d778a48aca
+
+	column market
+		dataType: string
+		lineageTag: 9e4df7e7-8685-4284-8fc5-7116e8a6d684
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 524cba02-31d3-4599-a4a2-bdeda5c0687e
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column ads_promotions_pct
+		dataType: double
+		lineageTag: 7528b488-22f3-48e7-8061-b3176899ae69
+		summarizeBy: sum
+		sourceColumn: ads_promotions_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column other_operational_expense_pct
+		dataType: double
+		lineageTag: fa7bd6cf-bbf9-417e-9668-7093d41de4a0
+		summarizeBy: sum
+		sourceColumn: other_operational_expense_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Operational_Expense = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("F:\DATA_ANALYST BOOTCAMP\Power BI\operating-expenses-table.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"market", type text}, {"fiscal_year", Int64.Type}, {"ads_promotions_pct", type number}, {"other_operational_expense_pct", type number}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","USA","United States",Replacer.ReplaceText,{"market"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Newzealand","New Zealand",Replacer.ReplaceText,{"market"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Philiphines","Philippines",Replacer.ReplaceText,{"market"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

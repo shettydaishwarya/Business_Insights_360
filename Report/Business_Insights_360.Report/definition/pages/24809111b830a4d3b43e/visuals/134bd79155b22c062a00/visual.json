@@ -1,0 +1,333 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "134bd79155b22c062a00",
+  "position": {
+    "x": 94.960629921259837,
+    "y": 205.51181102362204,
+    "z": 23000,
+    "height": 466.29921259842519,
+    "width": 554.17322834645665,
+    "tabOrder": 23000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_customer"
+                    }
+                  },
+                  "Property": "customer"
+                }
+              },
+              "queryRef": "dim_customer.customer",
+              "nativeQueryRef": "customer"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key_Measures"
+                    }
+                  },
+                  "Property": "Forecast Accuracy %"
+                }
+              },
+              "queryRef": "Key_Measures.forecast accuracy%",
+              "nativeQueryRef": "Forecast Accuracy %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key_Measures"
+                    }
+                  },
+                  "Property": "forecast accuracy % LY"
+                }
+              },
+              "queryRef": "Key_Measures.forecast accuracy % LY",
+              "nativeQueryRef": "forecast accuracy % LY"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key_Measures"
+                    }
+                  },
+                  "Property": "Net Error"
+                }
+              },
+              "queryRef": "Key_Measures.net_error",
+              "nativeQueryRef": "Net Error"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key_Measures"
+                    }
+                  },
+                  "Property": "Net Error %"
+                }
+              },
+              "queryRef": "Key_Measures.net_error %",
+              "nativeQueryRef": "Net Error %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Key_Measures"
+                    }
+                  },
+                  "Property": "Risk"
+                }
+              },
+              "queryRef": "Key_Measures.risk",
+              "nativeQueryRef": "Risk"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "dim_customer"
+                  }
+                },
+                "Property": "customer"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "182.9445532119242D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "P&L Rows.Line Item"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "76.22834207072717D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Key_Measures.forecast accuracy%"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.72238574807246D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Key_Measures.forecast accuracy % LY"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "119.89764049450562D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_customer.customer"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "70.56692463567285D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Key_Measures.net_error"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.14173551894447D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Key_Measures.net_error %"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "60D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'None'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

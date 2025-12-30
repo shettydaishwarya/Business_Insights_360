@@ -1,0 +1,41 @@
+expression Remaining_forecast =
+		let
+		    Source = fact_forecast_monthly,
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([date] > Last_Sales_Month)),
+		    #"Sorted Rows" = Table.Sort(#"Filtered Rows",{{"date", Order.Ascending}}),
+		    #"Renamed Columns" = Table.RenameColumns(#"Sorted Rows",{{"forecast_quantity", "Qty"}})
+		in
+		    #"Renamed Columns"
+	lineageTag: 453d66b5-59b7-4bd4-9752-1fd61744abce
+	queryGroup: 'Supporting Facts'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression gross_price =
+		let
+		    Source = MySQL.Database("localhost", "gdb056", [ReturnSingleDatabase=true]),
+		    gdb056_gross_price = Source{[Schema="gdb056",Item="gross_price"]}[Data]
+		in
+		    gdb056_gross_price
+	lineageTag: cb95ea9f-82f0-471b-95c0-c37bdee22271
+	queryGroup: 'Supporting Facts'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression pre_invoice_deductions =
+		let
+		    Source = MySQL.Database("localhost", "gdb056", [ReturnSingleDatabase=true]),
+		    gdb056_pre_invoice_deductions = Source{[Schema="gdb056",Item="pre_invoice_deductions"]}[Data]
+		in
+		    gdb056_pre_invoice_deductions
+	lineageTag: ac7e8e49-ace9-43e6-bedf-72c31178b1f6
+	queryGroup: 'Supporting Facts'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

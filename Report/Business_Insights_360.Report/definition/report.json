@@ -1,0 +1,157 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY25SU11",
+      "reportVersionAtImport": {
+        "visual": "2.4.0",
+        "report": "3.0.0",
+        "page": "2.3.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY25SU11",
+          "path": "BaseThemes/CY25SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "pastel-blue-vignette-concrete-5495829269895005.jpg",
+          "path": "pastel-blue-vignette-concrete-5495829269895005.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "info9521870607710703.png",
+          "path": "info9521870607710703.png",
+          "type": "Image"
+        },
+        {
+          "name": "economy4919848708436534.png",
+          "path": "economy4919848708436534.png",
+          "type": "Image"
+        },
+        {
+          "name": "executive7858413182416324.png",
+          "path": "executive7858413182416324.png",
+          "type": "Image"
+        },
+        {
+          "name": "acquisition7641477267132717.png",
+          "path": "acquisition7641477267132717.png",
+          "type": "Image"
+        },
+        {
+          "name": "advertising02024307093040245.png",
+          "path": "advertising02024307093040245.png",
+          "type": "Image"
+        },
+        {
+          "name": "supply-chain-management1202263386631186.png",
+          "path": "supply-chain-management1202263386631186.png",
+          "type": "Image"
+        },
+        {
+          "name": "help6696201485030702.png",
+          "path": "help6696201485030702.png",
+          "type": "Image"
+        },
+        {
+          "name": "Atliq_A_logo-0411175068065983162.png",
+          "path": "Atliq_A_logo-0411175068065983162.png",
+          "type": "Image"
+        },
+        {
+          "name": "pastel-blue-vignette-concrete-12165896962370004.jpg",
+          "path": "pastel-blue-vignette-concrete-12165896962370004.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Atliq_A_logo-047822798469097219.png",
+          "path": "Atliq_A_logo-047822798469097219.png",
+          "type": "Image"
+        },
+        {
+          "name": "economy24585815421492874.png",
+          "path": "economy24585815421492874.png",
+          "type": "Image"
+        },
+        {
+          "name": "acquisition5330725947724536.png",
+          "path": "acquisition5330725947724536.png",
+          "type": "Image"
+        },
+        {
+          "name": "advertising4997035130348456.png",
+          "path": "advertising4997035130348456.png",
+          "type": "Image"
+        },
+        {
+          "name": "supply-chain-management12260287901464251.png",
+          "path": "supply-chain-management12260287901464251.png",
+          "type": "Image"
+        },
+        {
+          "name": "executive5544138338455973.png",
+          "path": "executive5544138338455973.png",
+          "type": "Image"
+        },
+        {
+          "name": "home7904387071162331.png",
+          "path": "home7904387071162331.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true,
+    "customMemoryLimit": "1048576",
+    "customTimeoutLimit": "225"
+  }
+}

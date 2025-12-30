@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c8a2b4bc117ab1b5321d",
+  "position": {
+    "x": 76.838905775075986,
+    "y": 407.53799392097267,
+    "z": 10000,
+    "height": 110.88145896656536,
+    "width": 119.63525835866263,
+    "tabOrder": 15000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Download ",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "13px",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": "user manual",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Arial",
+                      "fontSize": "13px",
+                      "color": "#000000"
+                    }
+                  },
+                  {
+                    "value": " and get to know the key information of this tool.",
+                    "textStyle": {
+                      "fontFamily": "Arial",
+                      "fontSize": "13px",
+                      "color": "#000000"
+                    }
+                  }
+                ],
+                "horizontalTextAlignment": "center"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "100D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

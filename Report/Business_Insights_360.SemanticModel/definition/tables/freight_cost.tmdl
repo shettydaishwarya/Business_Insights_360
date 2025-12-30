@@ -1,0 +1,56 @@
+table freight_cost
+	lineageTag: 99103b04-1866-4c93-8084-b8b25853bc1a
+
+	column market
+		dataType: string
+		lineageTag: cce092cf-9f87-42a8-90f9-a6a60765221a
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: string
+		lineageTag: 0a5be886-6f03-45ac-b7d0-3f10128f14b2
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column freight_pct
+		dataType: double
+		lineageTag: 13bc9626-46f6-4e20-842e-70442738b161
+		summarizeBy: sum
+		sourceColumn: freight_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column other_cost_pct
+		dataType: double
+		lineageTag: 8cfad6b0-3e15-4b98-82e1-921c500b0fb3
+		summarizeBy: sum
+		sourceColumn: other_cost_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition freight_cost = m
+		mode: import
+		queryGroup: 'Supporting Facts'
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb056", [ReturnSingleDatabase=true]),
+				    gdb056_freight_cost = Source{[Schema="gdb056",Item="freight_cost"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(gdb056_freight_cost,"Philiphines","Philippines",Replacer.ReplaceText,{"market"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Newzealand","New Zealand",Replacer.ReplaceText,{"market"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","USA","United States",Replacer.ReplaceText,{"market"})
+				in
+				    #"Replaced Value2"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

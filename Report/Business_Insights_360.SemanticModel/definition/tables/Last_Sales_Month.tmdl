@@ -1,0 +1,30 @@
+table Last_Sales_Month
+	lineageTag: e202d2b4-9e2a-4bb8-aeb7-c41153ea46f2
+
+	column Last_Sales_Month
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 055927c0-f346-477b-94e4-ed5ec5953a8b
+		summarizeBy: none
+		sourceColumn: Last_Sales_Month
+
+		variation Variation
+			isDefault
+			relationship: 993cd297-f031-4aa2-97f3-403246d5ccb7
+			defaultHierarchy: LocalDateTable_cfdb29b0-5479-4b74-9ad0-20634d95af7b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Last_Sales_Month = m
+		mode: import
+		queryGroup: 'Supporting Facts'
+		source =
+				let
+				    Source = List.Max(fact_sales_monthly[date])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = DateTime
+

@@ -1,0 +1,17 @@
+table category
+	lineageTag: 99a61782-2df3-40fd-b6fd-ea285c84ee27
+
+	column category
+		lineageTag: 17d47367-c0ca-433e-91aa-3dbb1ff065f5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dim_product[category]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition category = calculated
+		mode: import
+		source = ALLNOBLANKROW(dim_product[category])
+
+	annotation PBI_Id = 9dcc3604849f4310ae03c2a925de6516
+

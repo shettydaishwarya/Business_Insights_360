@@ -1,0 +1,26 @@
+table 'P&L Columns'
+	lineageTag: 896a92eb-3ee3-48b6-a4a9-b930a39d4cbf
+
+	column 'Col Header'
+		lineageTag: c6c7539c-6593-4ca5-beb8-b7deaa3d17e4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Col Header]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'P&L Columns' = calculated
+		mode: import
+		source = ```
+				
+				var x = ALLNOBLANKROW(Fiscal_Year[FY_desc])
+				
+				RETURN 
+				UNION(
+				    ROW("Col Header", "BM"),
+				    ROW("Col Header", "Chg"),
+				    ROW("Col Header", "Chg %"), x)
+				```
+
+	annotation PBI_Id = abc8298ac1ce4822b5403eadb7203de0
+
