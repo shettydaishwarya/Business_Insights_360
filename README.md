@@ -124,7 +124,7 @@ Fact table : It will have the data about the transactions
         - There are 14 different categories, Like Internal HDD, keyboard
         - There are different variants available for the same product
     - fact_forecast_monthly
-        - This table is used to forecast the customerâ€™s need in advance, which can help in
+        - This table is used to forecast the customer's need in advance, which can help in
             - Higher customer satisfaction
             - Reduced cost in warehouses for storage purpose
         - The table is denormalized by data engineering team, as it is a data warehouse which is aimed to be used for analytical work.
