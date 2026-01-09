@@ -131,7 +131,7 @@ Fact table : It will have the data about the transactions
         - All the date of the month will be replaced by the start date of the month
         - It will have all the column names and in the end it will have the forecast quantity.
     - fact_sales_monthly
-        - This table is more or less same as fact_forecase_monthly table, but the last column has the value of sold quantity instead of forecast value.
+        - This table is more or less same as fact_forecast_monthly table, but the last column has the value of sold quantity instead of forecast value.
 - gdb056
     - freight_cost
         - This table has details of travel cost and other cost for each market with fiscal year
@@ -139,7 +139,7 @@ Fact table : It will have the data about the transactions
         - Has the details of gross prices with product code
     - manufacturing_cost
         - Has the details of manufacturing cost with product code with year
-    - Pre_invoice_dedutions
+    - Pre_invoice_deductions
         - Has the details of pre invoice deductions percentage for each customer with year
     - Post_invoice_deductions
         - Post invoice deductions and other deductions details
