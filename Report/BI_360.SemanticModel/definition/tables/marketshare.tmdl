@@ -59,7 +59,7 @@ table marketshare
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\dhava\OneDrive\Youtube\PaidCourses\2_PracticalPowerBI\Assets\MarketShare_v2022.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("F:\DATA_ANALYST BOOTCAMP\Power BI\marketshare-v2022.xlsx"), null, true),
 				    marketshare_Table = Source{[Item="marketshare",Kind="Table"]}[Data],
 				    #"Changed Type" = Table.TransformColumnTypes(marketshare_Table,{{"sub_zone", type text}, {"category", type text}, {"fy_desc", Int64.Type}, {"total_market_sales_$", type number}, {"atliq_sales_$", type number}, {"dale_sales_$", type number}, {"innovo_sales_$", type number}, {"pacer_sales_$", type number}, {"bp_sales_$", type number}, {"others_sales_$", type number}}),
 				    #"Unpivoted Columns" = Table.UnpivotOtherColumns(#"Changed Type", {"sub_zone", "category", "fy_desc", "total_market_sales_$"}, "Attribute", "Value"),
