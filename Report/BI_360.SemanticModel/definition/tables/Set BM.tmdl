@@ -1,0 +1,31 @@
+table 'Set BM'
+	lineageTag: b7c9b4ae-7824-4e2e-a3ce-8da3de74de12
+
+	column Benchmarks
+		dataType: string
+		lineageTag: 3b7243b4-8115-4a3a-b0da-07abe0b72f83
+		summarizeBy: none
+		sourceColumn: Benchmarks
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		dataType: int64
+		formatString: 0
+		lineageTag: d802c1f7-870c-4f82-b433-1592a1ee4459
+		summarizeBy: count
+		sourceColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Set BM-e9cfad9b-3c47-4f5c-9404-252c343def8c' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WKitW8IlU0lEyVIrVAfNCEovSU0uAIkZKsbEA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Benchmarks = _t, ID = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Benchmarks", type text}, {"ID", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

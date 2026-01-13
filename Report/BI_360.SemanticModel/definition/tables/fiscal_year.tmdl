@@ -1,0 +1,27 @@
+table fiscal_year
+	lineageTag: 5919e4ec-9054-42c5-8789-54b94c972713
+
+	column fiscal_year
+		lineageTag: f6f2dfde-29a1-4449-92a2-20ba9bbec29a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dim_date[fiscal_year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column fy_desc =
+			
+			var MAXDATE = CALCULATE(MAX(fiscal_year[fiscal_year]),ALL(fiscal_year[fiscal_year]))
+			return
+			IF(fiscal_year[fiscal_year]=MAXDATE, MAXDATE & " Est", fiscal_year[fiscal_year])
+		lineageTag: 94c31527-c060-43c1-956a-5fc28a557887
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fiscal_year-e5ef139c-55c6-4b46-8b80-ba832e67471f = calculated
+		mode: import
+		source = ALLNOBLANKROW(dim_date[fiscal_year])
+
+	annotation PBI_Id = e454b1fa59d644ef839e0b0dcb0841e1
+

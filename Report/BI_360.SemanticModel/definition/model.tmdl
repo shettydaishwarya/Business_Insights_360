@@ -1,0 +1,57 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup Dimensions
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Facts
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Supporting Facts'
+
+	annotation PBI_QueryGroupOrder = 2
+
+annotation PBI_QueryOrder = ["dim_customer","dim_market","dim_product","dim_date","fact_forecast_monthly","fact_sales_monthly","fact_actuals_estimates","freight_cost","gross_price","manufacturing_cost","post_invoice_deductions","pre_invoice_deductions","LastSalesMonth","Remaining Forecast","Key Measures","P & L Rows","Operational Expense","NsGmTarget","Set BM","report_refresh_date","marketshare"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim_customer
+ref table DateTableTemplate_87e4e8a1-679d-4a69-94f9-5ad700d0c388
+ref table dim_market
+ref table fact_forecast_monthly
+ref table dim_product
+ref table freight_cost
+ref table manufacturing_cost
+ref table post_invoice_deductions
+ref table dim_date
+ref table LocalDateTable_8fee377b-e9fc-42a7-a9cb-063d4534edca
+ref table LocalDateTable_f53a52a5-c829-4a3c-bdfa-aa0006af8ee8
+ref table fact_actuals_estimates
+ref table fiscal_year
+ref table 'Key Measures'
+ref table 'P & L Rows'
+ref table 'P & L Columns'
+ref table 'Operational Expense'
+ref table LastSalesMonth
+ref table LocalDateTable_04450489-e0c5-47f1-8636-3a4f64524fdb
+ref table NsGmTarget
+ref table 'Set BM'
+ref table report_refresh_date
+ref table LocalDateTable_0cba75a5-f375-4275-8b19-b081b09042a2
+ref table 'Target Gap Tolerance'
+ref table marketshare
+ref table sub_zone
+ref table category
+
+ref cultureInfo en-US
+

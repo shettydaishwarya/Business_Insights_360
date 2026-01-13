@@ -1,0 +1,61 @@
+table dim_customer
+	lineageTag: 09a3b59d-74b7-4dc5-9792-3240d1b06f61
+
+	column customer
+		dataType: string
+		lineageTag: cd356f4f-aa3b-4165-8c19-e2711b49931a
+		summarizeBy: none
+		sourceColumn: customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column market
+		dataType: string
+		lineageTag: 2e577616-efe4-4479-a5b7-ebbfb40ff417
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column platform
+		dataType: string
+		lineageTag: e7aab330-e58f-4aa7-8d47-3436c6cf5643
+		summarizeBy: none
+		sourceColumn: platform
+
+		annotation SummarizationSetBy = Automatic
+
+	column channel
+		dataType: string
+		lineageTag: a19bb31a-9eb8-432e-9680-6e6f596cf441
+		summarizeBy: none
+		sourceColumn: channel
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: 4c3c306b-fd81-41fe-9980-b00df59cb5cd
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customer-5e16ef16-0f0b-4eeb-8522-44fca6d9aa8a = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb041", [ReturnSingleDatabase=true]),
+				    gdb041_dim_customer = Source{[Schema="gdb041",Item="dim_customer"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(gdb041_dim_customer,"AltiQ Exclusive","AtliQ Exclusive",Replacer.ReplaceText,{"customer"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Atliq Exclusive","AtliQ Exclusive",Replacer.ReplaceText,{"customer"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",each [channel], each if [customer_code]="90002011" then "Direct" else [Channel],Replacer.ReplaceText,{"channel"}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Replaced Value2",{{"customer", Text.Trim, type text}})
+				in
+				    #"Trimmed Text"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

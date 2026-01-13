@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "Bookmark5fd42955ac63369f37e6"
+    },
+    {
+      "name": "Bookmark9ca6469bd393de1a8394"
+    }
+  ]
+}

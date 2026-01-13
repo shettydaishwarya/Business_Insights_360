@@ -1,0 +1,43 @@
+table manufacturing_cost
+	lineageTag: a319bbba-2858-4fd7-956e-b493f60cff69
+
+	column product_code
+		dataType: string
+		lineageTag: 01477559-b492-4132-a93f-12cfd322dd20
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost_year
+		dataType: string
+		lineageTag: 11012322-9c44-457b-a803-5267baa47a1f
+		summarizeBy: none
+		sourceColumn: cost_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column manufacturing_cost
+		dataType: double
+		lineageTag: e43c6df7-0785-4854-b098-478dafb3e757
+		summarizeBy: sum
+		sourceColumn: manufacturing_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition manufacturing_cost-01757af2-8950-4b69-9bbd-7fa7a89e6224 = m
+		mode: import
+		queryGroup: 'Supporting Facts'
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb056", [ReturnSingleDatabase=true]),
+				    gdb056_manufacturing_cost = Source{[Schema="gdb056",Item="manufacturing_cost"]}[Data]
+				in
+				    gdb056_manufacturing_cost
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

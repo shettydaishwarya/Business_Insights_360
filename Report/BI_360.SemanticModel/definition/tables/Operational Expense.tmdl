@@ -1,0 +1,55 @@
+table 'Operational Expense'
+	lineageTag: 8e99fb58-d5f6-4d2b-9a6b-59be2b2f5af3
+
+	column market
+		dataType: string
+		lineageTag: 1c65828e-e1d8-4071-986d-d1b5d3d3d5f0
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 28e7a2bf-7504-4ff0-8cca-3381466d40ef
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column ads_promotions_pct
+		dataType: double
+		lineageTag: 8912a165-3eb7-4565-9ac4-65b9434b95c1
+		summarizeBy: sum
+		sourceColumn: ads_promotions_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column other_operational_expense_pct
+		dataType: double
+		lineageTag: e848f976-0b8c-4512-bd40-5f150506c219
+		summarizeBy: sum
+		sourceColumn: other_operational_expense_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'Operational Expense-3e6e2db7-df43-4fff-9eb0-6033b584e684' = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\dhava\Desktop\operating_expenses_table.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"market", type text}, {"fiscal_year", Int64.Type}, {"ads_promotions_pct", type number}, {"other_operational_expense_pct", type number}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

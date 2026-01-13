@@ -1,0 +1,207 @@
+table fact_actuals_estimates
+	lineageTag: 6146789c-7488-496a-86e8-4336a85f0cb6
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 8d00b774-4fea-49d7-bd86-110cf3709884
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_code
+		dataType: string
+		lineageTag: 855771b6-054f-437e-8dc0-f6e2efc764b9
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: fe199041-18bc-4516-929a-cadc92c92627
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: dd326c28-6906-48bc-883e-c65bb61986a2
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column fiscal_year
+		dataType: string
+		lineageTag: 61ce5220-6392-4d1c-9e41-5a88f34157bd
+		summarizeBy: none
+		sourceColumn: fiscal_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column gross_sales_amount
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 789b45ab-781a-4a01-be8e-fb31d6e8cf1c
+		summarizeBy: sum
+		sourceColumn: gross_sales_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column net_invoice_sales_amount
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b9370dfe-a32d-4d77-b441-083252d7faff
+		summarizeBy: sum
+		sourceColumn: net_invoice_sales_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column post_invoice_deductions_amount = ```
+			
+			var res = CALCULATE(MAX(post_invoice_deductions[discounts_pct]), 
+			RELATEDTABLE(post_invoice_deductions))
+			return res*fact_actuals_estimates[net_invoice_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: be6cc210-48ad-4365-98de-2d7194a8ddb9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column post_invoice_other_deductions_amount = ```
+			
+			var res = CALCULATE(MAX(post_invoice_deductions[other_deductions_pct]), 
+			RELATEDTABLE(post_invoice_deductions))
+			return res*fact_actuals_estimates[net_invoice_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 62e7e9ad-c7c4-4cd6-8f8b-6c17771d9e35
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column net_sales_amount = fact_actuals_estimates[net_invoice_sales_amount]-fact_actuals_estimates[post_invoice_deductions_amount]-fact_actuals_estimates[post_invoice_other_deductions_amount]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 3121653e-21d5-4ffc-bd8f-f99d9a5a3ca2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column manufacturing_cost = ```
+			
+			var res = CALCULATE(MAX(manufacturing_cost[manufacturing_cost]), 
+			RELATEDTABLE(manufacturing_cost))
+			return res*fact_actuals_estimates[Qty]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 3e1ae44c-00f1-453b-9445-2da76906298a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column freight_cost = ```
+			
+			var res = CALCULATE(MAX(freight_cost[freight_pct]), 
+			RELATEDTABLE(freight_cost))
+			return res*fact_actuals_estimates[net_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 860d0cd0-0bb8-47d6-b7a8-b4926b0aa4bd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column other_cost = ```
+			
+			var res = CALCULATE(MAX(freight_cost[other_cost_pct]), 
+			RELATEDTABLE(freight_cost))
+			return res*fact_actuals_estimates[net_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 2521fc42-7bf4-4f07-9dfb-3f818044ee16
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column ads_promotions = ```
+			
+			var res = CALCULATE(MAX('Operational Expense'[ads_promotions_pct]), 
+			RELATEDTABLE('Operational Expense'))
+			return res*fact_actuals_estimates[net_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 6dcb43f3-1c93-42fd-8f1f-71ba8565785a
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column other_operational_expense = ```
+			
+			var res = CALCULATE(MAX('Operational Expense'[other_operational_expense_pct]), 
+			RELATEDTABLE('Operational Expense'))
+			return res*fact_actuals_estimates[net_sales_amount]
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 4bb129ab-f802-42ef-8896-ddb65df55c41
+		summarizeBy: sum
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition fact_actuals_estimates-752b7155-cb63-4dba-879d-cc629ec913f2 = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = Table.Combine({fact_sales_monthly, #"Remaining Forecast"}),
+				    #"Added Fiscal Year" = Table.AddColumn(Source, "fiscal_year", each Date.Year(Date.AddMonths([date],4))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Fiscal Year",{{"fiscal_year", type text}}),
+				    #"Merged With Gross Price" = Table.NestedJoin(#"Changed Type", {"product_code", "fiscal_year"}, gross_price, {"product_code", "fiscal_year"}, "gdb056 gross_price", JoinKind.LeftOuter),
+				    #"Expanded gdb056 gross_price" = Table.ExpandTableColumn(#"Merged With Gross Price", "gdb056 gross_price", {"gross_price"}, {"gross_price"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Expanded gdb056 gross_price",{{"gross_price", Currency.Type}}),
+				    // Added Gross Sales Amount. GS = Qty * Gross Price
+				    #"Added GS" = Table.AddColumn(#"Changed Type1", "gross_sales_amount", each [gross_price]*[Qty]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added GS",{{"gross_sales_amount", Currency.Type}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Changed Type2", {"customer_code", "fiscal_year"}, pre_invoice_deductions, {"customer_code", "fiscal_year"}, "gdb056 pre_invoice_deductions", JoinKind.LeftOuter),
+				    #"Expanded gdb056 pre_invoice_deductions" = Table.ExpandTableColumn(#"Merged Queries1", "gdb056 pre_invoice_deductions", {"pre_invoice_discount_pct"}, {"pre_invoice_discount_pct"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Expanded gdb056 pre_invoice_deductions",{{"pre_invoice_discount_pct", Percentage.Type}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type3", "pre_invoice_discount_amount", each [gross_sales_amount]*[pre_invoice_discount_pct]),
+				    #"Changed Type4" = Table.TransformColumnTypes(#"Added Custom2",{{"pre_invoice_discount_amount", Currency.Type}}),
+				    #"Added Custom3" = Table.AddColumn(#"Changed Type4", "net_invoice_sales_amount", each [gross_sales_amount]-[pre_invoice_discount_amount]),
+				    #"Changed Type5" = Table.TransformColumnTypes(#"Added Custom3",{{"net_invoice_sales_amount", Currency.Type}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type5",{"gross_price", "pre_invoice_discount_pct", "pre_invoice_discount_amount"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

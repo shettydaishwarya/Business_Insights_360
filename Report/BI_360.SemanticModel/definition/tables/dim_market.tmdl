@@ -1,0 +1,42 @@
+table dim_market
+	lineageTag: 704ad525-bff4-420d-a090-62787bbfa99c
+
+	column market
+		dataType: string
+		lineageTag: 9e0f0ad3-2363-4cb6-8901-eba23c554846
+		summarizeBy: none
+		sourceColumn: market
+
+		annotation SummarizationSetBy = Automatic
+
+	column sub_zone
+		dataType: string
+		lineageTag: 9761fd57-19aa-4951-a576-0adc25855206
+		summarizeBy: none
+		sourceColumn: sub_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 33cd969f-98d5-46bf-9631-466d984d57e7
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_market-b316b7c7-0dab-47c3-889c-d2142068ddff = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb041", [ReturnSingleDatabase=true]),
+				    gdb041_dim_market = Source{[Schema="gdb041",Item="dim_market"]}[Data],
+				    #"Replaced Value" = Table.ReplaceValue(gdb041_dim_market,"nan","NA",Replacer.ReplaceText,{"sub_zone", "region"})
+				in
+				    #"Replaced Value"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

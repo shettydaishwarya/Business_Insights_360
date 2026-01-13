@@ -1,0 +1,160 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY21SU11",
+      "reportVersionAtImport": {
+        "visual": "1.8.64",
+        "report": "2.0.64",
+        "page": "1.3.64"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY21SU11",
+          "path": "BaseThemes/CY21SU11.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "pastel-blue-vignette-concrete-6744622960447539.jpg",
+          "path": "pastel-blue-vignette-concrete-6744622960447539.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "info9521870607710703.png",
+          "path": "info9521870607710703.png",
+          "type": "Image"
+        },
+        {
+          "name": "economy4919848708436534.png",
+          "path": "economy4919848708436534.png",
+          "type": "Image"
+        },
+        {
+          "name": "executive7858413182416324.png",
+          "path": "executive7858413182416324.png",
+          "type": "Image"
+        },
+        {
+          "name": "acquisition7641477267132717.png",
+          "path": "acquisition7641477267132717.png",
+          "type": "Image"
+        },
+        {
+          "name": "advertising02024307093040245.png",
+          "path": "advertising02024307093040245.png",
+          "type": "Image"
+        },
+        {
+          "name": "supply-chain-management1202263386631186.png",
+          "path": "supply-chain-management1202263386631186.png",
+          "type": "Image"
+        },
+        {
+          "name": "help6696201485030702.png",
+          "path": "help6696201485030702.png",
+          "type": "Image"
+        },
+        {
+          "name": "Atliq_A_logo-0411175068065983162.png",
+          "path": "Atliq_A_logo-0411175068065983162.png",
+          "type": "Image"
+        },
+        {
+          "name": "pastel-blue-vignette-concrete-948987543921378.jpg",
+          "path": "pastel-blue-vignette-concrete-948987543921378.jpg",
+          "type": "Image"
+        },
+        {
+          "name": "Atliq_A_logo-049560803427265865.png",
+          "path": "Atliq_A_logo-049560803427265865.png",
+          "type": "Image"
+        },
+        {
+          "name": "economy45315335457158734.png",
+          "path": "economy45315335457158734.png",
+          "type": "Image"
+        },
+        {
+          "name": "acquisition13960335661122092.png",
+          "path": "acquisition13960335661122092.png",
+          "type": "Image"
+        },
+        {
+          "name": "advertising3547695161679769.png",
+          "path": "advertising3547695161679769.png",
+          "type": "Image"
+        },
+        {
+          "name": "supply-chain-management8198766896145051.png",
+          "path": "supply-chain-management8198766896145051.png",
+          "type": "Image"
+        },
+        {
+          "name": "executive6549644161201742.png",
+          "path": "executive6549644161201742.png",
+          "type": "Image"
+        },
+        {
+          "name": "home29338567354667067.png",
+          "path": "home29338567354667067.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultFilterActionIsDataFilter": true,
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

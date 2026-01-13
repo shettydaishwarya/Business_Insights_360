@@ -1,0 +1,37 @@
+table report_refresh_date
+	lineageTag: e55557b9-c8be-4dd6-ba8e-cddf4219a10f
+
+	column 'Report Last Refreshed'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 77c4bf13-5abc-46e5-803d-19230a80f6ae
+		summarizeBy: none
+		sourceColumn: Report Last Refreshed
+
+		variation Variation
+			isDefault
+			relationship: bdbba9cf-4ec7-4c12-9ff1-ad1ecf7ee2b9
+			defaultHierarchy: LocalDateTable_0cba75a5-f375-4275-8b19-b081b09042a2.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition report_refresh_date-2c04c3f0-22a6-4045-a038-3ad669fccdd0 = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				
+				Source = #table(type table[Report Last Refreshed=datetime], {{DateTime.LocalNow()}})
+				
+				in
+				
+				Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

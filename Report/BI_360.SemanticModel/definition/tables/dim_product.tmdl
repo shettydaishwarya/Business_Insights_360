@@ -1,0 +1,63 @@
+table dim_product
+	lineageTag: 181584b0-57dd-43f2-aa41-8b806d21cf6c
+
+	column product_code
+		dataType: string
+		lineageTag: 9003b27a-bd3f-4bae-b8b1-a2c9f82e4fe0
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column division
+		dataType: string
+		lineageTag: efa3869d-edb6-4109-a808-d49ff74f482e
+		summarizeBy: none
+		sourceColumn: division
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 63309730-1172-4314-a86d-c145f0c36aea
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column category
+		dataType: string
+		lineageTag: 0f78ad6f-06dd-4d24-b9fc-a8801b72811d
+		summarizeBy: none
+		sourceColumn: category
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: a5468f67-e542-420c-95a5-e331ca103b89
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column variant
+		dataType: string
+		lineageTag: 2804ebad-e487-4088-bfff-7d31d00b5802
+		summarizeBy: none
+		sourceColumn: variant
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_product-52bda20b-7bd0-4136-bca0-17af6b66ba82 = m
+		mode: import
+		queryGroup: Dimensions
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb041", [ReturnSingleDatabase=true]),
+				    gdb041_dim_product = Source{[Schema="gdb041",Item="dim_product"]}[Data]
+				in
+				    gdb041_dim_product
+
+	annotation PBI_ResultType = Table
+

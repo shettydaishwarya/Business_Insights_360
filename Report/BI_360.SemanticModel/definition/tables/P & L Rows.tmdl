@@ -1,0 +1,47 @@
+table 'P & L Rows'
+	lineageTag: 8c053f38-490a-4ea6-89c6-06c046e27a7c
+
+	column Description
+		dataType: string
+		lineageTag: 71d25ea0-a163-4d2c-acf0-873c0517d2cd
+		summarizeBy: none
+		sourceColumn: Description
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		dataType: int64
+		formatString: 0
+		lineageTag: 556a6755-e7ca-45a9-8f31-56a23b308f0c
+		summarizeBy: sum
+		sourceColumn: Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Line Item'
+		dataType: string
+		lineageTag: 893cff6d-1a12-46fa-a78d-4826db37045b
+		summarizeBy: none
+		sourceColumn: Line Item
+		sortByColumn: Order
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'P & L Rows-5f0815fd-2d1d-490f-9f71-f76fab711976' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("fZFBb8IwDIX/ilWJG9NW2GA7w4Z26EBiO1Ucos6USChBSTrt589Ok7ZhFQdfnj8n79llmW2Mthb24ow2m2Y51VA5TMtsZxDe1Y+WFcIav5vKSa2Im1GN93jqA13Xia/Pqf7r/g9te3ktbaUb5Yh+pLoD343qyIB2JzSJt6fBXJTbwU/txBnS/waDC6qbSMwWMy1Dpj5LIVRzFJVrjFQ1rOgZQp69oZEWT7wZlPXJRfbFs4nI1NanDEz+4KGB1odbbTd7RvIui1cYaG9bCFNLTpvPunsH7RqCCWPzK4xUDxZwD19KekN8ql7whi9oBC+NHLz+XlBZZJBvM9aKm90ZfWyfXITdBiUFYALMLBOGjR3+AA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Description = _t, Order = _t, #"Line Item" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Description", type text}, {"Order", Int64.Type}, {"Line Item", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

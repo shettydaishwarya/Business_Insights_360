@@ -1,0 +1,286 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 474.60859250067415,
+            "y": 153.55748294130808
+          },
+          "nodeIndex": "dim_date",
+          "size": {
+            "height": 149.75280898876406,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 980.27227992119526,
+            "y": 410.3495078099856
+          },
+          "nodeIndex": "fact_actuals_estimates",
+          "size": {
+            "height": 192.26464779460173,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 1326.5744823668738,
+            "y": 103.21877071142282
+          },
+          "nodeIndex": "dim_customer",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 1479.5205817865133,
+            "y": 1172.9215227610421
+          },
+          "nodeIndex": "dim_market",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 978.3711684743015,
+            "y": 212.18780519482087
+          },
+          "nodeIndex": "fact_forecast_monthly",
+          "size": {
+            "height": 183.01514154048704,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 536.53889682992849,
+            "y": 1049.7637410978959
+          },
+          "nodeIndex": "dim_product",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 987.09309966794615,
+            "y": 994.30717260833217
+          },
+          "nodeIndex": "freight_cost",
+          "size": {
+            "height": 188.24489795918362,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 989.59347691199309,
+            "y": 830.17044753047935
+          },
+          "nodeIndex": "manufacturing_cost",
+          "size": {
+            "height": 158.12244897959181,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 985.74007468847253,
+            "y": 619.118424836661
+          },
+          "nodeIndex": "post_invoice_deductions",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 364.80900666471183,
+            "y": 789.36980336129523
+          },
+          "nodeIndex": "fiscal_year",
+          "size": {
+            "height": 139.32584269662919,
+            "width": 159.84269662921346
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Key Measures",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 1941.4,
+            "y": 0
+          },
+          "nodeIndex": "P & L Rows",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 2337.6,
+            "y": 0
+          },
+          "nodeIndex": "P & L Columns",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 984.4741573033707,
+            "y": 1198.8764044943819
+          },
+          "nodeIndex": "Operational Expense",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2688.6,
+            "y": 0
+          },
+          "nodeIndex": "LastSalesMonth",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 985.92359550561832,
+            "y": 1398.8764044943819
+          },
+          "nodeIndex": "NsGmTarget",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 3052.4,
+            "y": 0
+          },
+          "nodeIndex": "Set BM",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 3403.4,
+            "y": 0
+          },
+          "nodeIndex": "report_refresh_date",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 3809.1,
+            "y": 0
+          },
+          "nodeIndex": "Target Gap Tolerance",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 985.35697952829378,
+            "y": 1620.056393261711
+          },
+          "nodeIndex": "marketshare",
+          "size": {
+            "height": 259.64125560538128,
+            "width": 234
+          },
+          "zIndex": 20
+        },
+        {
+          "location": {
+            "x": 1761.3538116591938,
+            "y": 1294.6098654708519
+          },
+          "nodeIndex": "sub_zone",
+          "size": {
+            "height": 124,
+            "width": 228.39461883408103
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 328.61838565022413,
+            "y": 1104.2600896860986
+          },
+          "nodeIndex": "category",
+          "size": {
+            "height": 124,
+            "width": 188.03587443946208
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 89.200000000000017,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

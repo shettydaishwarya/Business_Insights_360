@@ -1,0 +1,64 @@
+table post_invoice_deductions
+	lineageTag: 97905427-02f7-4b1b-886c-111f8d76b936
+
+	column customer_code
+		dataType: string
+		lineageTag: 01ffa698-afdd-4ccc-9726-cb6c662d7a62
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_code
+		dataType: string
+		lineageTag: 5f7df376-249b-4868-ae12-fe5141022137
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 642dc7bf-4220-4270-bebb-5c664b19d078
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column discounts_pct
+		dataType: double
+		lineageTag: f8f0657c-ef7f-46f9-b20b-0094e59eca38
+		summarizeBy: sum
+		sourceColumn: discounts_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column other_deductions_pct
+		dataType: double
+		lineageTag: 64bf6cd8-2c59-490c-879e-73b08c14cf2a
+		summarizeBy: sum
+		sourceColumn: other_deductions_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition post_invoice_deductions-fe66608f-47a4-4003-8942-e450fbb58ae2 = m
+		mode: import
+		queryGroup: 'Supporting Facts'
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb056", [ReturnSingleDatabase=true]),
+				    gdb056_post_invoice_deductions = Source{[Schema="gdb056",Item="post_invoice_deductions"]}[Data]
+				in
+				    gdb056_post_invoice_deductions
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

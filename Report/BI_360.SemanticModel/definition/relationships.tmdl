@@ -1,0 +1,116 @@
+relationship 86bd4ddd-ef35-4b61-afcf-6c1a5fa038af
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date
+	toColumn: LocalDateTable_8fee377b-e9fc-42a7-a9cb-063d4534edca.Date
+
+relationship 123f23a1-feb7-4052-ad1f-fe7e9f7179c5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.month
+	toColumn: LocalDateTable_f53a52a5-c829-4a3c-bdfa-aa0006af8ee8.Date
+
+relationship ccb24ef6-b62b-4e95-bafd-8585e726e573
+	fromColumn: fact_forecast_monthly.date
+	toColumn: dim_date.date
+
+relationship 433d70c7-e990-499f-8bb8-38d9e1da0edc
+	fromColumn: fact_actuals_estimates.date
+	toColumn: dim_date.date
+
+relationship 81b67170-9b7e-481e-9753-f37c4658281c
+	fromColumn: post_invoice_deductions.date
+	toColumn: dim_date.date
+
+relationship 7994d940-ed71-4739-b39e-4b1200a84a11
+	fromColumn: fact_forecast_monthly.customer_code
+	toColumn: dim_customer.customer_code
+
+relationship b569d86d-23b4-47f4-9388-9862070874e5
+	fromColumn: fact_actuals_estimates.customer_code
+	toColumn: dim_customer.customer_code
+
+relationship a75306d8-2c1f-4442-830c-d0dab9285104
+	fromColumn: post_invoice_deductions.customer_code
+	toColumn: dim_customer.customer_code
+
+relationship e84b1b5e-96d8-4721-b79b-1b3274c1cd22
+	fromColumn: fact_forecast_monthly.product_code
+	toColumn: dim_product.product_code
+
+relationship 773f100a-db52-40fb-a043-d847899bbd27
+	fromColumn: fact_actuals_estimates.product_code
+	toColumn: dim_product.product_code
+
+relationship 103a04be-5be9-4b5d-b259-3ec1bcfc2447
+	fromColumn: post_invoice_deductions.product_code
+	toColumn: dim_product.product_code
+
+relationship 0bf3a6f7-03c6-4cb0-ad2e-bf3e15ee7e3d
+	fromColumn: manufacturing_cost.product_code
+	toColumn: dim_product.product_code
+
+relationship 257eceb9-0eed-483d-944f-00e19496719b
+	fromColumn: dim_customer.market
+	toColumn: dim_market.market
+
+relationship c5858bd5-102a-444f-a688-bfaa479d0305
+	fromColumn: freight_cost.market
+	toColumn: dim_market.market
+
+relationship 96b7a101-534b-491e-9f31-01bf2c9011b3
+	fromColumn: dim_date.fiscal_year
+	toColumn: fiscal_year.fiscal_year
+
+relationship ad36f947-9895-4ddd-a99a-b7bf96314886
+	fromColumn: freight_cost.fiscal_year
+	toColumn: fiscal_year.fiscal_year
+
+relationship a9c215a5-b992-4b41-b315-44fe088da1a5
+	fromColumn: manufacturing_cost.cost_year
+	toColumn: fiscal_year.fiscal_year
+
+relationship dd50f46d-6fda-40d4-889d-ad9ac9505c37
+	fromColumn: 'Operational Expense'.fiscal_year
+	toColumn: fiscal_year.fiscal_year
+
+relationship fcd0214e-4f10-425a-b26a-9d11cdcb235f
+	fromColumn: 'Operational Expense'.market
+	toColumn: dim_market.market
+
+relationship 396c46f5-ba9b-4b9b-9eae-57f93f9fdc2a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: LastSalesMonth.LastSalesMonth
+	toColumn: LocalDateTable_04450489-e0c5-47f1-8636-3a4f64524fdb.Date
+
+relationship 9da6f0e2-fab8-4d63-98a7-0e0f2e7cdbc8
+	fromColumn: NsGmTarget.market
+	toColumn: dim_market.market
+
+relationship fce59d9d-32d8-49ed-8fb6-3cd7f8dd2c0a
+	fromColumn: NsGmTarget.month
+	toColumn: dim_date.date
+
+relationship bdbba9cf-4ec7-4c12-9ff1-ad1ecf7ee2b9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: report_refresh_date.'Report Last Refreshed'
+	toColumn: LocalDateTable_0cba75a5-f375-4275-8b19-b081b09042a2.Date
+
+relationship f58762e2-e9ff-4e5d-85f8-1cf813fe8ca2
+	fromColumn: marketshare.fy
+	toColumn: fiscal_year.fiscal_year
+
+relationship 7b905cd4-df34-455b-bc31-7b0009308cc0
+	fromColumn: dim_product.category
+	toColumn: category.category
+
+relationship 8ea5d90d-603a-4129-ac49-b21f9c9d9642
+	fromColumn: marketshare.category
+	toColumn: category.category
+
+relationship 951f4f79-f571-4f19-a762-0d80678cdbf8
+	fromColumn: dim_market.sub_zone
+	toColumn: sub_zone.sub_zone
+
+relationship 37c39ef4-94e0-4e56-9cce-0e7b20ba4478
+	fromColumn: marketshare.sub_zone
+	toColumn: sub_zone.sub_zone
+

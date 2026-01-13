@@ -1,0 +1,52 @@
+table fact_forecast_monthly
+	lineageTag: 15b98fcd-0095-408b-9425-533ac20c7b74
+
+	column date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: c8bbf200-0edf-448e-8bec-05680cfd1545
+		summarizeBy: none
+		sourceColumn: date
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_code
+		dataType: string
+		lineageTag: def4ccdb-8ddb-4c14-9208-476c9285143c
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_code
+		dataType: string
+		lineageTag: 2caf750f-34a9-4c45-a99c-e6b13bec9e4c
+		summarizeBy: none
+		sourceColumn: customer_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column forecast_quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: 9e16127d-de36-4e4e-b019-e39ac7f08e72
+		summarizeBy: sum
+		sourceColumn: forecast_quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fact_forecast_monthly-a0a379a6-4f36-4755-95a1-7fab1afa9eff = m
+		mode: import
+		queryGroup: Facts
+		source =
+				let
+				    Source = MySQL.Database("localhost", "gdb041", [ReturnSingleDatabase=true]),
+				    gdb041_fact_forecast_monthly = Source{[Schema="gdb041",Item="fact_forecast_monthly"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(gdb041_fact_forecast_monthly,{"date", "product_code", "customer_code", "forecast_quantity"})
+				in
+				    #"Removed Other Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

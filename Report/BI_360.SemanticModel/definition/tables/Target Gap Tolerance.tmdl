@@ -1,0 +1,29 @@
+table 'Target Gap Tolerance'
+	lineageTag: 1be70f38-f5d7-4a40-8018-975432b2ce54
+
+	measure 'Target Gap Tolerance Value' = SELECTEDVALUE('Target Gap Tolerance'[Target Gap Tolerance])
+		lineageTag: f89af5cb-41fa-49c5-8b17-27fc437dd127
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Target Gap Tolerance'
+		formatString: 0%;-0%;0%
+		lineageTag: de852cfa-cbaf-4d7f-b0bd-b0f8b40a7096
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = User
+
+	partition 'Target Gap Tolerance-5b17c8ce-1073-4de3-afa0-b839b8f189a8' = calculated
+		mode: import
+		source = GENERATESERIES(0, 0.2, 0.01)
+
+	annotation PBI_Id = c0625977fdad4765b606adc25cefbd02
+
