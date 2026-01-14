@@ -66,13 +66,13 @@
         "sort": [
           {
             "field": {
-              "Column": {
+              "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "dim_customer"
+                    "Entity": "Key Measures"
                   }
                 },
-                "Property": "customer"
+                "Property": "RC %"
               }
             },
             "direction": "Descending"

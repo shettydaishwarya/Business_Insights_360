@@ -105,10 +105,10 @@
                     "Entity": "Key Measures"
                   }
                 },
-                "Property": "Risk"
+                "Property": "Forecast Accuracy %"
               }
             },
-            "direction": "Ascending"
+            "direction": "Descending"
           }
         ]
       }

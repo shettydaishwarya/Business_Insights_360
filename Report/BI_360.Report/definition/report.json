@@ -148,7 +148,8 @@
     "exportDataMode": "AllowSummarized",
     "defaultFilterActionIsDataFilter": true,
     "defaultDrillFilterOtherVisuals": true,
-    "allowChangeFilterTypes": true
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true
   },
   "slowDataSourceSettings": {
     "isCrossHighlightingDisabled": false,
